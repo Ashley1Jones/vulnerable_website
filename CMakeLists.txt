@@ -11,15 +11,22 @@ endif()
 
 project ("vulnerable_website")
 
+add_subdirectory(${PROJECT_SOURCE_DIR}/include/cpp-httplib)
+# target_precompile_headers(httplib::httplib INTERFACE ${PROJECT_SOURCE_DIR}/include/cpp-httplib)
+
 
 set(SOURCES src/vulnerable_website.cpp)
 
 add_executable(vulnerable_website ${SOURCES})
 
+target_link_libraries(vulnerable_website httplib::httplib)
+
 target_include_directories(
 	vulnerable_website
 	PRIVATE
 		${PROJECT_SOURCE_DIR}/include
+		# ${PROJECT_SOURCE_DIR}/include/cpp-httplib
 )
+
 # Include sub-projects.
 # add_subdirectory ("vulnerable_website")
