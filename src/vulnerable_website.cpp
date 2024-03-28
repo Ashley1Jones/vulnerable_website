@@ -7,12 +7,14 @@
 
 void getInfo() {
 	std::string line;
-	std::cout << "Please enter any key to login: " << std::endl;
+	std::cout << "Please enter any key to login: ";
 	std::getline(std::cin, line);
+	std::cout << std::endl;
 }
 
 
 std::tuple<std::string, std::string, std::string> parseFormData(std::string data) {
+	// pretending as though we are parsing for now. 
 	return { "uname", "pass", "/userinfo.php" };
 }
 
