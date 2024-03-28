@@ -11,5 +11,15 @@ endif()
 
 project ("vulnerable_website")
 
+
+set(SOURCES src/vulnerable_website.cpp)
+
+add_executable(vulnerable_website ${SOURCES})
+
+target_include_directories(
+	vulnerable_website
+	PRIVATE
+		${PROJECT_SOURCE_DIR}/include
+)
 # Include sub-projects.
-add_subdirectory ("vulnerable_website")
+# add_subdirectory ("vulnerable_website")
