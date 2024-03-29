@@ -1,4 +1,8 @@
-﻿#include <any>
+﻿/*
+Author: Ashley Jones
+This small script logs into the website http://testphp.vulnweb.com.
+*/
+
 #include "vulnerable_website.h"
 #include "httplib.h"
 #include <iostream>
