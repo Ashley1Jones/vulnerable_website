@@ -25,7 +25,7 @@ void promptUserToEnd() {
 }
 
 
-std::tuple<std::string, std::string, std::string> parseFormData(std::string data) {
+std::tuple<std::string, std::string, std::string> parseFormData(const std::string& data) {
 	// pretending as though we are parsing for now. 
 	return { "uname", "pass", "/userinfo.php" };
 }
