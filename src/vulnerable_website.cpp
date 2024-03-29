@@ -5,7 +5,15 @@
 #include<tuple> 
 
 
-void getInfo() {
+void promptUserToStart() {
+	std::string line;
+	std::cout << "Please enter any key to start process: ";
+	std::getline(std::cin, line);
+	std::cout << std::endl;
+}
+
+
+void promptUserToEnd() {
 	std::string line;
 	std::cout << "Please enter any key to login: ";
 	std::getline(std::cin, line);
@@ -43,7 +51,7 @@ int main()
 
 	httplib::Result res = cli.Post(formName, params);
 
-	std::cout << res->body << std::endl;
+	promptUserToEnd();
 
 	return 0;
 }
