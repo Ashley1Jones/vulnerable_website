@@ -6,7 +6,7 @@ This small script logs into the website http://testphp.vulnweb.com.
 #include "vulnerable_website.h"
 #include "httplib.h"
 #include <iostream>
-#include<tuple> 
+#include <tuple> 
 
 
 void promptUserToStart() {
@@ -53,6 +53,17 @@ int main()
 	};
 
 	httplib::Result loginResult = cli.Post(formName, loginParams);
+
+	std::cout << loginResult->body << std::endl;
+
+	switch (loginResult->status) {
+	case SUCCESS_CODE:
+		std::cout << "Success!" << std::endl;
+		break;
+	default:
+		std::cerr << "Failed to access website with code: " << loginResult->status << std::endl;
+		break;
+	}
 
 	std::cout << loginResult->body << std::endl;
 
