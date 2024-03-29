@@ -43,13 +43,14 @@ int main()
 		pass = std::get<1>(formData), 
 		formName = std::get<2>(formData);
 
-
-	httplib::Params params{
+	httplib::Params loginParams{
 	  { uname, "test" },
 	  { pass, "test" }
 	};
 
-	httplib::Result res = cli.Post(formName, params);
+	httplib::Result loginResult = cli.Post(formName, loginParams);
+
+	std::cout << loginResult->body << std::endl;
 
 	promptUserToEnd();
 
