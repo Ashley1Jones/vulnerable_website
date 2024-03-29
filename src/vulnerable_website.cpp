@@ -39,6 +39,7 @@ int main()
 	httplib::Client cli(url);
 
 	std::string loginPath = "/login.php";
+
 	httplib::Result loginPageData = cli.Get(loginPath);
 
 	auto formData = parseFormData(loginPageData->body);
