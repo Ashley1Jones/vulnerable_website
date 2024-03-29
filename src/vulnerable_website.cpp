@@ -1,6 +1,7 @@
 ﻿/*
 Author: Ashley Jones
 This small script logs into the website http://testphp.vulnweb.com.
+It does this by using hardcoded parameters, uname, pass and using the script /userinfo.php.
 */
 
 // project include
