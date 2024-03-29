@@ -19,11 +19,11 @@ int main()
 	httplib::Result loginPageData, loginResult;
 	httplib::Client cli(url);
 
-	promptUserToStart();
+	utils::promptUserToStart();
 
 	loginPageData = cli.Get(loginPath);
 
-	LoginForm login(loginPageData->body);
+	utils::LoginForm login(loginPageData->body);
 
 	loginResult = cli.Post(
 		login.formScript, 
@@ -43,7 +43,7 @@ int main()
 
 	std::cout << loginResult->body << std::endl;
 
-	promptUserToEnd();
+	utils::promptUserToEnd();
 
 	return 0;
 }

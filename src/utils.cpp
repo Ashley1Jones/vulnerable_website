@@ -3,6 +3,7 @@
 #include "httplib.h"
 #include "utils.h"
 
+namespace utils {
 
 void promptUserToStart() {
 	std::string line;
@@ -37,8 +38,9 @@ LoginForm::LoginForm(const std::string& pageData) {
 
 httplib::Params LoginForm::createLoginParams() {
 	httplib::Params loginParams{
-		  { uname, "test" },
-		  { pass, "test" }
+			{ uname, "test" },
+			{ pass, "test" }
 	};
 	return loginParams;
 }
+} // end of utils

@@ -7,6 +7,7 @@ Dumping ground for functions and classes for now.
 #include <string>
 #include "httplib.h"
 
+namespace utils {
 
 void promptUserToStart();
 void promptUserToEnd();
@@ -21,3 +22,4 @@ public:
 	LoginForm(const std::string& pageData);
 	httplib::Params createLoginParams();
 };
+} // end of utils
