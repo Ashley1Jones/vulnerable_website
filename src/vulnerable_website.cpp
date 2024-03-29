@@ -25,35 +25,49 @@ void promptUserToEnd() {
 }
 
 
-std::tuple<std::string, std::string, std::string> parseFormData(const std::string& data) {
-	// pretending as though we are parsing for now. 
-	return { "uname", "pass", "/userinfo.php" };
-}
+class LoginForm {
+	std::tuple<std::string, std::string, std::string> extractFormData(const std::string& data) {
+		// pretending as though we are parsing for now. 
+		return { "uname", "pass", "/userinfo.php" };
+	}
+
+public: 
+	std::string uname, pass, formScript;
+
+	LoginForm(const std::string& pageData) {
+		auto formData = extractFormData(pageData);
+		
+		this->uname = std::get<0>(formData);
+		this->pass = std::get<1>(formData);
+		this->formScript = std::get<2>(formData);
+	}
+
+	httplib::Params createLoginParams() {
+		httplib::Params loginParams{
+			  { uname, "test" },
+			  { pass, "test" }
+		};
+		return loginParams;
+	}
+};
 
 
 int main()
 {
-	promptUserToStart();
-
-	std::string url = "http://testphp.vulnweb.com";
+	std::string url = "http://testphp.vulnweb.com", loginPath = "/login.php";
+	httplib::Result loginPageData, loginResult;
 	httplib::Client cli(url);
 
-	std::string loginPath = "/login.php";
+	promptUserToStart();
 
-	httplib::Result loginPageData = cli.Get(loginPath);
+	loginPageData = cli.Get(loginPath);
 
-	auto formData = parseFormData(loginPageData->body);
+	LoginForm login(loginPageData->body);
 
-	std::string uname = std::get<0>(formData), 
-		pass = std::get<1>(formData), 
-		formName = std::get<2>(formData);
-
-	httplib::Params loginParams{
-	  { uname, "test" },
-	  { pass, "test" }
-	};
-
-	httplib::Result loginResult = cli.Post(formName, loginParams);
+	loginResult = cli.Post(
+		login.formScript, 
+		login.createLoginParams()
+	);
 
 	std::cout << loginResult->body << std::endl;
 
