@@ -29,7 +29,7 @@ std::tuple<std::string, std::string, std::string> parseFormData(std::string data
 
 int main()
 {
-	getInfo();
+	promptUserToStart();
 
 	std::string url = "http://testphp.vulnweb.com";
 	httplib::Client cli(url);
