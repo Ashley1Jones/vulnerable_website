@@ -15,7 +15,7 @@ void promptUserToStart() {
 
 void promptUserToEnd() {
 	std::string line;
-	std::cout << "Please enter any key to login: ";
+	std::cout << "Please enter any key to end process: ";
 	std::getline(std::cin, line);
 	std::cout << std::endl;
 }
