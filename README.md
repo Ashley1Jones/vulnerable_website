@@ -9,7 +9,7 @@ git clone --recurse-submodules https://github.com/Ashley1Jones/vulnerable_websit
 ```
 as to also clone submodule cpp-httplib.
 
-### Windows
+### Build: Windows
 The project was tested and built using Visual Studio 2022. 
 
 Configure build with cmake:
@@ -25,7 +25,7 @@ The vulnerable website executable should be in ./build/Release/vulnerable_websit
 start ./build/Release/vulnerable_website
 ```
 
-### Linux
+### Build: Linux
 Sorry! This has not been tested for Linux, however, these are the commands I could see working:
 ```
 cmake -DCMAKE_BUILD_TYPE=Release -S . -B ./build
@@ -43,4 +43,5 @@ Run the executable:
 ./build/Release/vulnerable_website
 ```
 
-
+## Note
+"simple_request" branch has been preserved for extra visibility. 
